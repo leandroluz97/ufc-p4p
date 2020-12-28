@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css "
+    />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header__container">
+        <ul class="header__left">
+          <li class="header__left-item"><a href="#">Division</a></li>
+          <li class="header__left-item"><a href="#">Women</a></li>
+        </ul>
+        <h1 class="header__logo"><a href="#">UFC</a></h1>
+
+        <ul class="header__right">
+          <li class="header__right-item"><a href="#">Man</a></li>
+          <li class="header__right-item"><a href="#">Division</a></li>
+        </ul>
+
+        <div class="header__stripes">
+          <div class="header__stripes-item"></div>
+          <div class="header__stripes-item"></div>
+          <div class="header__stripes-item"></div>
+        </div>
+      </div>
+      <ul class="header__middle">
+        <li class="header__middle-item"><a href="#">Division</a></li>
+        <li class="header__middle-item"><a href="#">Women</a></li>
+        <li class="header__middle-item"><a href="#">Division</a></li>
+        <li class="header__middle-item"><a href="#">Women</a></li>
+      </ul>
+    </header>
+
+    <main class="main">
+      <h2 class="main__title">Create your p4p ufc ranking</h2>
+      <form class="main__form" id="form">
+        <div class="main__content">
+          <div class="main__form-inputs">
+            <div class="main__form-group main__form-name">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="main__form-input"
+                placeholder="Conor McGregor"
+              />
+            </div>
+
+            <div class="main__form-group main__form-nickname">
+              <input
+                type="text"
+                name="nickname"
+                id="nickname"
+                class="main__form-input"
+                placeholder="The Notorious"
+              />
+            </div>
+
+            <div class="main__form-group main__form-image">
+              <input
+                type="text"
+                name="image-link"
+                id="image-link"
+                class="main__form-input"
+                placeholder="http://www.ufc.com/image/fighters/conormcgregor/photos/885459685239232528.jpg"
+              />
+            </div>
+
+            <div class="main__form-group main__form-rank">
+              <input
+                type="text"
+                name="rank"
+                id="rank"
+                class="main__form-input"
+                placeholder="Rank"
+              />
+            </div>
+
+            <div class="main__form-group main__form-win">
+              <input
+                type="text"
+                name="win"
+                id="win"
+                class="main__form-input"
+                placeholder="W"
+              />
+            </div>
+
+            <div class="main__form-group main__form-lost">
+              <input
+                type="text"
+                name="lost"
+                id="lost"
+                class="main__form-input"
+                placeholder="L"
+              />
+            </div>
+
+            <div class="main__form-group main__form-draw">
+              <input
+                type="text"
+                name="draw"
+                id="draw"
+                class="main__form-input"
+                placeholder="D"
+              />
+            </div>
+          </div>
+          <div class="main__form-buttons">
+            <div class="form__group">
+              <button id="add-btn" class="action__btn main__form-add">
+                Add <span> <i class="fas fa-plus main__icon-add"></i></span>
+              </button>
+            </div>
+
+            <div class="form__group">
+              <button id="update-btn" class="action__btn main__form-update">
+                Update
+                <span> <i class="fas fa-pen main__icon-update"></i></span>
+              </button>
+            </div>
+
+            <div class="form__group">
+              <button id="delete-btn" class="action__btn main__form-delete">
+                delete
+                <span> <i class="fas fa-trash main__icon-delete"></i></span>
+              </button>
+            </div>
+
+            <div class="form__group">
+              <button id="cancel-btn" class="action__btn main__form-cancel">
+                Cancel
+                <span> <i class="fas fa-undo-alt main__icon-cancel"></i></span>
+              </button>
+            </div>
+          </div>
+          <div class="form__group main__form-dates">
+            <p class="main__form-date">
+              Created: 20/2020 <span id="created"></span>
+            </p>
+            <p class="main__form-date">
+              Last Edit: 27/12/2020 <span id="last-edit"></span>
+            </p>
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <section class="ranking">
+      <h3 class="ranking__title">Ranking Pound for Pound</h3>
+
+      <div class="ranking__header">
+        <p>Rank</p>
+        <p>Name</p>
+        <p>Nickname</p>
+        <p>Win-Lost-Draw</p>
+      </div>
+      <div class="ranking__content">
+        <ul class="ranking__fighters">
+          <li class="ranking__fighters-item">
+            <p class="ranking__position">C</p>
+            <img
+              class="ranking__image"
+              src="https://esbrasil.com.br/wp-content/uploads/2020/06/jonjones.jpg"
+              alt=""
+            />
+            <p class="ranking__name">Jon Jones</p>
+            <p class="ranking__nickname">Bones</p>
+            <p class="ranking__cartel">
+              <span class="win">19</span>-<span class="lost">0</span>-<span
+                class="draw"
+                >1</span
+              >
+            </p>
+            <button class="ranking__edit"><i class="fas fa-pen"></i></button>
+          </li>
+          <li class="ranking__fighters-item">
+            <p class="ranking__position">C</p>
+            <img
+              class="ranking__image"
+              src="https://esbrasil.com.br/wp-content/uploads/2020/06/jonjones.jpg"
+              alt=""
+            />
+            <p class="ranking__name">Jon Jones</p>
+            <p class="ranking__nickname">Bones</p>
+            <p class="ranking__cartel">
+              <span class="win">19</span>-<span class="lost">0</span>-<span
+                class="draw"
+                >1</span
+              >
+            </p>
+            <button class="ranking__edit"><i class="fas fa-pen"></i></button>
+          </li>
+          <li class="ranking__fighters-item">
+            <p class="ranking__position">C</p>
+            <img
+              class="ranking__image"
+              src="https://esbrasil.com.br/wp-content/uploads/2020/06/jonjones.jpg"
+              alt=""
+            />
+            <p class="ranking__name">Jon Jones</p>
+            <p class="ranking__nickname">Bones</p>
+            <p class="ranking__cartel">
+              <span class="win">19</span>-<span class="lost">0</span>-<span
+                class="draw"
+                >1</span
+              >
+            </p>
+            <button class="ranking__edit"><i class="fas fa-pen"></i></button>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>

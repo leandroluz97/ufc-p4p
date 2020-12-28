@@ -1,0 +1,258 @@
+.main {
+  &__title {
+    @extend %title-section;
+  }
+
+  &__form {
+    background-color: $darker-gray;
+    padding: 2vh 7%;
+
+    &-name {
+      grid-column: 1/5;
+      grid-row: 1;
+    }
+    &-nickname {
+      grid-column: 1/5;
+      grid-row: 2;
+    }
+    &-image {
+      grid-column: 1/5;
+      grid-row: 3;
+    }
+    &-rank {
+      grid-column: 1;
+      grid-row: 4;
+      margin: 0 0.7em 0 0;
+    }
+    &-win {
+      grid-column: 2;
+      grid-row: 4;
+      margin: 0 0.7em;
+    }
+    &-lost {
+      grid-column: 3;
+      grid-row: 4;
+      margin: 0 0.7em;
+    }
+    &-draw {
+      grid-column: 4;
+      grid-row: 4;
+      margin: 0 0 0 0.7em;
+    }
+
+    &-inputs {
+      display: grid;
+    }
+    &-input {
+      width: 100%;
+      font-size: 1.2em;
+      padding: 0.6em 0.8em;
+      border-radius: 5px;
+      border: none;
+      margin: 0.7em 0;
+      background-color: $medium-gray;
+      color: white;
+    }
+
+    &-input::placeholder {
+      color: $placeholder-color;
+    }
+
+    &-add,
+    &-update,
+    &-delete,
+    &-cancel {
+      margin: 0.7em 0;
+      color: $darker-gray;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    &-add {
+      background-color: $purple;
+      @extend %flex-center;
+
+      span {
+        background-color: $darker-gray;
+        @extend %icon-width;
+        @extend %flex-center;
+        margin-left: 1em;
+
+        i {
+          color: $purple;
+          font-size: 0.8em;
+        }
+      }
+    }
+    &-update {
+      background-color: $green;
+      @extend %flex-center;
+      span {
+        background-color: $darker-gray;
+        @extend %icon-width;
+        @extend %flex-center;
+        margin-left: 1em;
+
+        i {
+          color: $green;
+          font-size: 0.8em;
+        }
+      }
+    }
+    &-delete {
+      background-color: $red;
+      @extend %flex-center;
+
+      span {
+        background-color: $darker-gray;
+        @extend %icon-width;
+        @extend %flex-center;
+        margin-left: 1em;
+
+        i {
+          color: $red;
+          font-size: 0.8em;
+        }
+      }
+    }
+    &-cancel {
+      background-color: $ligter-gray;
+      @extend %flex-center;
+
+      span {
+        background-color: $darker-gray;
+        @extend %icon-width;
+        @extend %flex-center;
+        margin-left: 1em;
+
+        i {
+          color: $ligter-gray;
+          font-size: 0.8em;
+        }
+      }
+    }
+    &-date {
+      color: $placeholder-color;
+    }
+    &-dates {
+      margin-top: 1em;
+    }
+    &-date p:first-child {
+      color: $placeholder-color;
+    }
+  }
+  /*
+  &__icon-add {
+  }
+  &__icon-update {
+  }
+  &__icon-delete {
+  }
+  &__icon-cancel {
+  }
+  */
+}
+
+@media (min-width: 426px) {
+}
+@media (min-width: 769px) {
+  .main {
+    margin: 3em 7%;
+    &__title {
+      font-size: 1.5em;
+    }
+
+    &__form {
+      margin: auto;
+      padding: 2vh 3vw;
+      border-radius: 15px;
+      max-width: 1200px;
+
+      &-name {
+        grid-column: 1/7;
+        grid-row: 1;
+      }
+      &-nickname {
+        grid-column: 7/13;
+        grid-row: 1;
+      }
+      &-image {
+        grid-column: 1/8;
+        grid-row: 2;
+      }
+      &-rank {
+        grid-column: 8/10;
+        grid-row: 2;
+        margin: 0;
+      }
+      &-win {
+        grid-column: 10/11;
+        grid-row: 2;
+        margin: 0;
+      }
+      &-lost {
+        grid-column: 11/12;
+        grid-row: 2;
+        margin: 0;
+      }
+      &-draw {
+        grid-column: 12/13;
+        grid-row: 2;
+        margin: 0;
+      }
+
+      &-inputs {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        column-gap: 1.4em;
+      }
+      &-buttons {
+        & > .form__group {
+          display: inline-block;
+          width: 180px;
+          margin-right: 16px;
+        }
+      }
+      &-dates {
+        margin-left: auto;
+      }
+    }
+    .is-btn--hide {
+      display: none;
+    }
+  }
+  &__content {
+    max-width: 1200px;
+    margin: auto;
+  }
+  #win {
+    padding-right: 0.2em;
+  }
+  #lost {
+    padding-right: 0.2em;
+  }
+  #draw {
+    padding-right: 0.2em;
+  }
+}
+@media (min-width: 1024px) {
+  .main {
+    max-width: 1200px;
+    margin: 10em auto 5%;
+    &__form {
+      margin: auto;
+      max-width: 1440px;
+      padding: 3em 4em;
+    }
+    &__content {
+      max-width: 1200px;
+      margin: auto;
+    }
+  }
+  .is-btn--hide {
+    display: none;
+  }
+}
+.is-btn--hide {
+  display: none;
+}

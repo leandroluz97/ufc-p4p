@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  color: $white;
+  text-decoration: none;
+}
+html {
+  width: 100%;
+}
+body {
+  background-color: $main-color;
+  color: $white;
+  font-family: $font;
+  width: 100%;
+}
+li {
+  list-style: none;
+}

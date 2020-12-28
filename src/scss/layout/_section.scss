@@ -1,0 +1,167 @@
+.ranking {
+  &__title {
+    @extend %title-section;
+    margin-top: 3em;
+  }
+  &__header {
+    display: none;
+  }
+  &__content {
+    background-color: $medium-gray;
+    padding: 2em 7%;
+  }
+  &__position {
+    grid-column: 1/2;
+    grid-row: 1;
+    font-size: 3em;
+    font-weight: 700;
+    line-height: 1;
+    color: $purple;
+  }
+  &__image {
+    grid-column: 2/3;
+    grid-row: 1;
+    align-self: center;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    justify-self: center;
+    border-radius: 10px;
+  }
+  &__name {
+    grid-column: 1/4;
+    grid-row: 2;
+    text-align: center;
+    padding-top: 1em;
+    font-size: 1.2em;
+  }
+  &__nickname {
+    grid-column: 1/4;
+    grid-row: 3;
+    text-align: center;
+    padding-top: 0.5em;
+    font-size: 1.2em;
+  }
+  &__cartel {
+    grid-column: 1/4;
+    grid-row: 4;
+    text-align: center;
+    padding-top: 0.5em;
+    font-size: 1.2em;
+  }
+  &__edit {
+    grid-column: 3/4;
+    grid-row: 1;
+    display: block;
+    border: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    justify-self: end;
+    color: $green;
+    background-color: $icon-gray;
+    cursor: pointer;
+  }
+  &__fighters {
+    &-item {
+      background-color: $main-color;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      padding: 1.5em;
+      margin: 0 0 1em 0;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}
+@media (min-width: 426px) {
+}
+@media (min-width: 769px) {
+  .ranking {
+    &__title {
+      font-size: 1.5em;
+    }
+    &__content {
+      padding: 1em 1em;
+    }
+    &__position {
+      grid-column: 1/2;
+      grid-row: 1;
+      font-size: 3em;
+      font-weight: 700;
+      line-height: 1;
+      color: $purple;
+    }
+    &__image {
+      grid-column: 2/3;
+      grid-row: 1;
+      align-self: center;
+      height: 60px;
+      width: 60px;
+      object-fit: cover;
+      justify-self: start;
+      border-radius: 10px;
+      margin: 0 0.5em;
+    }
+    &__name {
+      grid-column: 3/4;
+      grid-row: 1;
+      text-align: center;
+      padding-top: 0;
+      font-size: 1.2em;
+      align-self: center;
+      justify-self: start;
+    }
+    &__nickname {
+      grid-column: 4/5;
+      grid-row: 1;
+      text-align: center;
+      padding-top: 0;
+      font-size: 1.2em;
+      align-self: center;
+      justify-self: start;
+    }
+    &__cartel {
+      grid-column: 5/6;
+      grid-row: 1;
+      text-align: center;
+      padding-top: 0;
+      font-size: 1.2em;
+      align-self: center;
+      justify-self: start;
+    }
+    &__edit {
+      grid-column: 6/7;
+      grid-row: 1;
+      display: block;
+      border: none;
+      height: 50px;
+      width: 50px;
+      border-radius: 10px;
+      justify-self: end;
+      color: $green;
+      background-color: $icon-gray;
+      align-self: center;
+      cursor: pointer;
+    }
+    &__fighters {
+      &-item {
+        grid-template-columns: 1fr 1fr 3fr 3fr 2fr 1fr;
+        padding: 0.5em;
+      }
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .ranking {
+    max-width: 1200px;
+    margin: auto;
+
+    &__content {
+      border-radius: 15px;
+    }
+  }
+}
