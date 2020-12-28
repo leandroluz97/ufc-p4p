@@ -26,7 +26,7 @@ const UiCtrl = (() => {
     UISelectors: function () {
       return UISelectors;
     },
-    inputValue: function () {
+    getInputValue: function () {
       //get input values
       const name = document.querySelector(UISelectors.nameInput).value;
       const nickname = document.querySelector(UISelectors.nicknameInput).value;
@@ -85,7 +85,7 @@ const UiCtrl = (() => {
       document.querySelector(UISelectors.groupAdd).style.display =
         'inline-block';
       document.querySelector(UISelectors.groupDelete).style.display = 'none';
-      document.querySelector(UISelectors.groupCancel).style.display = 'none';
+      document.querySelector(UISelectors.groupUpdate).style.display = 'none';
       document.querySelector(UISelectors.groupCancel).style.display = 'none';
       document.querySelector(UISelectors.created).style.display = 'none';
       document.querySelector(UISelectors.lastEdit).style.display = 'none';

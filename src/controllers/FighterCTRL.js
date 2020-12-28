@@ -58,6 +58,7 @@ const fightersCTRL = (function () {
   };
 
   return {
+    addFighter: function () {},
     getFighters: function () {
       return data.fighters;
     },

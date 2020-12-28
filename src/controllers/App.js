@@ -1,43 +1,52 @@
 import UiCtrl from './UiCTRL';
 import FightersCtrl from './FighterCTRL';
 import StorageCTRL from './StorageCTRL';
+import ValidatorCTRL from './ValidatorCTRL';
 
-const App = (function (ui, war, ls) {
-  const fight = [
-    {
-      name: 'Jone Jones',
-      nickname: 'Bones',
-      image: 'https://esbrasil.com.br/wp-content/uploads/2020/06/jonjones.jpg',
-      rank: '1',
-      win: '20',
-      lost: '0',
-      draw: '1',
-      create: '9999',
-      lastEdit: '9999',
-      id: 4,
-    },
-    {
-      name: 'Khabib Numagomedov',
-      nickname: 'The Eagle',
-      image: 'https://esbrasil.com.br/wp-content/uploads/2020/06/jonjones.jpg',
-      rank: '1',
-      win: '20',
-      lost: '0',
-      draw: '1',
-      create: '9999',
-      lastEdit: '9999',
-      id: 4,
-    },
-  ];
+const App = (function (UiCtrl, FightersCtrl, StorageCTRL, ValidatorCtrl) {
+  //get selectors
+  const UISelectors = UiCtrl.UISelectors();
+
+  //All event listeners
+  function eventListerners() {
+    //Handle new fighter event
+    const addSubmit = document.querySelector(UISelectors.addBtn);
+    addSubmit.addEventListener('click', handleAddSubmit);
+  }
+
+  //Handle new fighter  function
+  const handleAddSubmit = function (e) {
+    e.preventDefault();
+    //get input value
+    const inputValues = UiCtrl.getInputValue();
+
+    console.log(ValidatorCtrl);
+    //validade
+
+    const validate = ValidatorCtrl.validateInput(inputValues);
+    if (validate.value) {
+      console.log(validate.message);
+    } else {
+      ValidatorCtrl.alert(validate.message);
+      console.log('error validations');
+    }
+  };
 
   return {
     init: function () {
-      console.log();
-      console.log(war);
+      //get fighters
+      const fighters = FightersCtrl.getFighters();
 
-      ui.populateFighters(fight);
+      //clear edit state
+      UiCtrl.clearModeEditState();
+
+      //Populate fighter
+      UiCtrl.populateFighters(fighters);
+
+      //run event eventListerners
+      eventListerners();
     },
   };
-})(UiCtrl, FightersCtrl, StorageCTRL);
+})(UiCtrl, FightersCtrl, StorageCTRL, ValidatorCTRL);
 
 export default App;
