@@ -73,7 +73,7 @@ const UiCtrl = (() => {
                 <span class="win">${fighter.win}</span>-<span class="lost">${fighter.lost}</span>-<span
                     class="draw">${fighter.draw}</span>
                 </p>
-                <button class="ranking__edit"><i class="fas fa-pen"></i></button>
+                <i class="fas fa-pen ranking__edit"></i>
           </li>
             `;
       });
@@ -85,6 +85,16 @@ const UiCtrl = (() => {
       document.querySelector(UISelectors.groupUpdate).style.display = 'block';
       document.querySelector(UISelectors.groupCancel).style.display = 'block';
       document.querySelector(UISelectors.dateGroup).style.display = 'block';
+    },
+    setinputValues: function name(fighter) {
+      document.querySelector(UISelectors.nameInput).value = fighter.name;
+      document.querySelector(UISelectors.nicknameInput).value =
+        fighter.nickname;
+      document.querySelector(UISelectors.imageInput).value = fighter.image;
+      document.querySelector(UISelectors.rankInput).value = fighter.rank;
+      document.querySelector(UISelectors.winInput).value = fighter.win;
+      document.querySelector(UISelectors.lostInput).value = fighter.lost;
+      document.querySelector(UISelectors.drawInput).value = fighter.draw;
     },
     clearModeEditState: function () {
       //hide the edit state button

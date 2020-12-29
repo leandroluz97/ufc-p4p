@@ -116,9 +116,29 @@ const fightersCTRL = (function () {
 
       return data.fighters;
     },
+
+    setStateFighter: function (id) {
+      let currentStateFighter;
+
+      //iterate through all fighters
+      data.fighters.forEach((fighter) => {
+        //check for the same id
+        if (fighter.id === id) {
+          currentStateFighter = fighter;
+        }
+      });
+
+      data.stateFighter = currentStateFighter;
+    },
+
+    getStateFighter: function () {
+      return data.stateFighter;
+    },
+
     getFighters: function () {
       return data.fighters;
     },
+
     getData: function () {
       return data;
     },

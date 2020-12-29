@@ -22,8 +22,8 @@
     grid-column: 2/3;
     grid-row: 1;
     align-self: center;
-    height: 150px;
-    width: 150px;
+    height: 130px;
+    width: 130px;
     object-fit: cover;
     justify-self: center;
     border-radius: 10px;
@@ -54,10 +54,10 @@
     grid-row: 1;
     display: block;
     border: none;
-    height: 40px;
-    width: 40px;
+    padding: 13px;
     border-radius: 10px;
     justify-self: end;
+    align-self: start;
     color: $green;
     background-color: $icon-gray;
     cursor: pointer;
@@ -138,8 +138,9 @@
       grid-row: 1;
       display: block;
       border: none;
-      height: 50px;
-      width: 50px;
+      width: 0;
+      height: 0;
+      padding: 20px 35px 35px 20px;
       border-radius: 10px;
       justify-self: end;
       color: $green;
