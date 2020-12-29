@@ -13,6 +13,7 @@ const UiCtrl = (() => {
     cancelBtn: '#cancel-btn',
     created: '#created',
     lastEdit: '#last-edit',
+    dateGroup: '.main__form-dates',
     rankingContent: '.ranking__content',
     rankingFighters: '.ranking__figthers',
     editBtn: '.ranking__edit',
@@ -46,6 +47,15 @@ const UiCtrl = (() => {
         drawValue: draw,
       };
     },
+    clearInputValues: function () {
+      document.querySelector(UISelectors.nameInput).value = '';
+      document.querySelector(UISelectors.nicknameInput).value = '';
+      document.querySelector(UISelectors.imageInput).value = '';
+      document.querySelector(UISelectors.rankInput).value = '';
+      document.querySelector(UISelectors.winInput).value = '';
+      document.querySelector(UISelectors.lostInput).value = '';
+      document.querySelector(UISelectors.drawInput).value = '';
+    },
     populateFighters: function (fighters) {
       const ul = document.querySelector('.ranking__fighters');
 
@@ -71,24 +81,18 @@ const UiCtrl = (() => {
     modeEditState: function () {
       //show the edit state button
       document.querySelector(UISelectors.groupAdd).style.display = 'none';
-      document.querySelector(UISelectors.groupDelete).style.display =
-        'inline-block';
-      document.querySelector(UISelectors.groupUpdate).style.display =
-        'inline-block';
-      document.querySelector(UISelectors.groupCancel).style.display =
-        'inline-block';
-      document.querySelector(UISelectors.created).style.display = 'block';
-      document.querySelector(UISelectors.lastEdit).style.display = 'block';
+      document.querySelector(UISelectors.groupDelete).style.display = 'block';
+      document.querySelector(UISelectors.groupUpdate).style.display = 'block';
+      document.querySelector(UISelectors.groupCancel).style.display = 'block';
+      document.querySelector(UISelectors.dateGroup).style.display = 'block';
     },
     clearModeEditState: function () {
       //hide the edit state button
-      document.querySelector(UISelectors.groupAdd).style.display =
-        'inline-block';
+      document.querySelector(UISelectors.groupAdd).style.display = 'block';
       document.querySelector(UISelectors.groupDelete).style.display = 'none';
       document.querySelector(UISelectors.groupUpdate).style.display = 'none';
       document.querySelector(UISelectors.groupCancel).style.display = 'none';
-      document.querySelector(UISelectors.created).style.display = 'none';
-      document.querySelector(UISelectors.lastEdit).style.display = 'none';
+      document.querySelector(UISelectors.dateGroup).style.display = 'none';
     },
     hideRanking: function () {
       document.querySelector(UISelectors.rankingContent).style.display = 'none';

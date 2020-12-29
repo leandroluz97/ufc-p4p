@@ -217,6 +217,7 @@
         column-gap: 1.4em;
       }
       &-buttons {
+        display: flex;
         & > .form__group {
           display: inline-block;
           width: 180px;

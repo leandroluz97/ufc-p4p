@@ -13,14 +13,14 @@ const ValidatorCTRL = (() => {
       //Name validation
       if (typeof input.nameValue === String || input.nameValue === '') {
         caution.value = false;
-        caution.message = `${input.nameValue} is not a valid name.`;
+        caution.message = `Please Fill the Name field, or enter a valid Name`;
         return caution;
       }
 
       //NickName validations
       if (typeof input.nicknameValue === String || input.nicknameValue === '') {
         caution.value = false;
-        caution.message = `${input.nicknameValue} is not a valid nickname.`;
+        caution.message = `Please Fill the Nickname, or enter a valid NickName`;
         return caution;
       }
 

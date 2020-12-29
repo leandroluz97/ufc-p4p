@@ -20,12 +20,13 @@ const App = (function (UiCtrl, FightersCtrl, StorageCTRL, ValidatorCtrl) {
     //get input value
     const inputValues = UiCtrl.getInputValue();
 
-    console.log(ValidatorCtrl);
-    //validade
-
+    //validate inputs
     const validate = ValidatorCtrl.validateInput(inputValues);
     if (validate.value) {
-      console.log(validate.message);
+      const newFighter = FightersCtrl.addFighter(inputValues);
+
+      //Populate fighter
+      UiCtrl.populateFighters(newFighter);
     } else {
       ValidatorCtrl.alert(validate.message);
       console.log('error validations');

@@ -32,23 +32,23 @@ const fightersCTRL = (function () {
         nickname: 'Bones',
         image:
           'https://esbrasil.com.br/wp-content/uploads/2020/06/jonjones.jpg',
-        rank: '1',
-        win: '20',
-        lost: '0',
-        draw: '1',
+        rank: 3,
+        win: 20,
+        lost: 0,
+        draw: 1,
         create: '9999',
         lastEdit: '9999',
-        id: 4,
+        id: 3,
       },
       {
         name: 'Khabib Numagomedov',
         nickname: 'The Eagle',
         image:
           'https://esbrasil.com.br/wp-content/uploads/2020/06/jonjones.jpg',
-        rank: '1',
-        win: '20',
-        lost: '0',
-        draw: '1',
+        rank: 2,
+        win: 1,
+        lost: 0,
+        draw: 8,
         create: '9999',
         lastEdit: '9999',
         id: 4,
@@ -58,7 +58,64 @@ const fightersCTRL = (function () {
   };
 
   return {
-    addFighter: function () {},
+    addFighter: function ({
+      nameValue,
+      nicknameValue,
+      imageValue,
+      rankValue,
+      winValue,
+      lostValue,
+      drawValue,
+    }) {
+      //create date
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const day = date.getDate();
+      const hour = date.getHours();
+      const min = date.getMinutes();
+      const sec = date.getSeconds();
+      const fullDate = ` ${day}/${month}/${year} - ${hour}:${min}:${sec}`;
+
+      //create ID
+      let ID;
+      let arrOfId = [];
+      if (data.fighters.length === 0) {
+        ID = 0;
+      } else {
+        data.fighters.forEach((fighter) => {
+          arrOfId.push(fighter.id);
+        });
+
+        ID = Math.max(...arrOfId) + 1;
+      }
+
+      //creat edit date
+      let editDate = null;
+
+      const newFighter = new Fighters(
+        nameValue,
+        nicknameValue,
+        imageValue,
+        rankValue,
+        winValue,
+        lostValue,
+        drawValue,
+        fullDate,
+        editDate,
+        ID
+      );
+
+      //insert new figter into the array figters
+      data.fighters.push(newFighter);
+
+      //sort array the by  lower to higher position
+      data.fighters.sort(function (a, b) {
+        return a.rank - b.rank;
+      });
+
+      return data.fighters;
+    },
     getFighters: function () {
       return data.fighters;
     },
