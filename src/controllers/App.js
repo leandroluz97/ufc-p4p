@@ -15,6 +15,18 @@ const App = (function (UiCtrl, FightersCtrl, StorageCTRL, ValidatorCtrl) {
 
     //Hanfle edit state
     document.addEventListener('click', handleEditState);
+
+    //Handle submit update
+    const updateBtn = document.querySelector(UISelectors.updateBtn);
+    updateBtn.addEventListener('click', handleUpdateSubmit);
+
+    //Handle delete
+    const deleteBtn = document.querySelector(UISelectors.deleteBtn);
+    deleteBtn.addEventListener('click', handleDelete);
+
+    //Handle cancel
+    const cancelBtn = document.querySelector(UISelectors.cancelBtn);
+    cancelBtn.addEventListener('click', handleCancel);
   }
 
   //Handle new fighter  function
@@ -41,7 +53,7 @@ const App = (function (UiCtrl, FightersCtrl, StorageCTRL, ValidatorCtrl) {
   };
 
   //Hanfle edit state
-  const handleEditState = function (e) {
+  const handleEditState = (e) => {
     e.preventDefault();
 
     //click the edit btn
@@ -63,6 +75,62 @@ const App = (function (UiCtrl, FightersCtrl, StorageCTRL, ValidatorCtrl) {
     }
   };
 
+  //handle updte submit
+  const handleUpdateSubmit = (e) => {
+    e.preventDefault();
+
+    //get input values
+    const inputValue = UiCtrl.getInputValue();
+
+    //get state fighter
+    const currentFighterState = FightersCtrl.getStateFighter();
+
+    //update fighter
+    const updateFighters = FightersCtrl.updateFighter(
+      currentFighterState.id,
+      inputValue
+    );
+
+    //populate new fighters update
+    UiCtrl.populateFighters(updateFighters);
+
+    //clear inputs
+    UiCtrl.clearInputValues();
+
+    //clear edit state
+    UiCtrl.clearModeEditState();
+  };
+
+  //Handle delete
+  const handleDelete = (e) => {
+    e.preventDefault();
+
+    //get state fighter
+    const currentFighterState = FightersCtrl.getStateFighter();
+
+    //delete from DB
+    FightersCtrl.deleteFighter(currentFighterState.id);
+
+    //delete from ui
+    UiCtrl.deleteFighterUi(currentFighterState.id);
+
+    //clear inputs
+    UiCtrl.clearInputValues();
+
+    //clear edit state
+    UiCtrl.clearModeEditState();
+  };
+
+  //Handle cancel
+  const handleCancel = (e) => {
+    e.preventDefault();
+
+    //clear inputs
+    UiCtrl.clearInputValues();
+
+    //clear edit state
+    UiCtrl.clearModeEditState();
+  };
   return {
     init: function () {
       //get fighters

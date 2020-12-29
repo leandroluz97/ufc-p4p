@@ -116,6 +116,38 @@ const fightersCTRL = (function () {
 
       return data.fighters;
     },
+    updateFighter: function (id, upFighter) {
+      data.fighters.forEach((fighter) => {
+        if (fighter.id === id) {
+          //update date
+          const date = new Date(),
+            year = date.getFullYear(),
+            month = date.getMonth(),
+            day = date.getDate(),
+            hour = date.getHours(),
+            min = date.getMinutes(),
+            sec = date.getSeconds(),
+            fullDate = ` ${day}/${month}/${year} - ${hour}:${min}:${sec}`;
+          fighter.name = upFighter.nameValue;
+          fighter.nickname = upFighter.nicknameValue;
+          fighter.image = upFighter.imageValue;
+          fighter.rank = upFighter.rankValue;
+          fighter.win = upFighter.winValue;
+          fighter.lost = upFighter.lostValue;
+          fighter.lastEdit = fullDate;
+        }
+      });
+
+      //sort the fight by rank
+      data.fighters.sort(function (a, b) {
+        return a.rank - b.rank;
+      });
+
+      //empty edit state
+      data.stateFighter = null;
+
+      return data.fighters;
+    },
 
     setStateFighter: function (id) {
       let currentStateFighter;
@@ -129,6 +161,20 @@ const fightersCTRL = (function () {
       });
 
       data.stateFighter = currentStateFighter;
+    },
+
+    deleteFighter: function (id) {
+      let position;
+
+      data.fighters.forEach((fighter, index) => {
+        //check for the same id
+        if (fighter.id === id) {
+          position = index;
+        }
+      });
+
+      //delete from the data
+      data.fighters.splice(position, 1);
     },
 
     getStateFighter: function () {

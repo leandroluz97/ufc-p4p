@@ -78,6 +78,15 @@ const UiCtrl = (() => {
             `;
       });
     },
+    deleteFighterUi: function (id) {
+      const fighters = document.querySelectorAll('.ranking__fighters-item');
+
+      fighters.forEach((fighter) => {
+        if (fighter.getAttribute('data-id') == id) {
+          fighter.remove();
+        }
+      });
+    },
     modeEditState: function () {
       //show the edit state button
       document.querySelector(UISelectors.groupAdd).style.display = 'none';
@@ -95,6 +104,8 @@ const UiCtrl = (() => {
       document.querySelector(UISelectors.winInput).value = fighter.win;
       document.querySelector(UISelectors.lostInput).value = fighter.lost;
       document.querySelector(UISelectors.drawInput).value = fighter.draw;
+      document.querySelector(UISelectors.created).innerHTML = fighter.create;
+      document.querySelector(UISelectors.lastEdit).innerHTML = fighter.lastEdit;
     },
     clearModeEditState: function () {
       //hide the edit state button
