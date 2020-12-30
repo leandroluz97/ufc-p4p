@@ -83,6 +83,7 @@ const UiCtrl = (() => {
 
       fighters.forEach((fighter) => {
         if (fighter.getAttribute('data-id') == id) {
+          console.log(id);
           fighter.remove();
         }
       });

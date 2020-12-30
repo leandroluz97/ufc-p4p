@@ -3,7 +3,7 @@ import FightersCtrl from './FighterCTRL';
 import StorageCTRL from './StorageCTRL';
 import ValidatorCTRL from './ValidatorCTRL';
 
-const App = (function (UiCtrl, FightersCtrl, StorageCTRL, ValidatorCtrl) {
+const App = (function (UiCtrl, FightersCtrl, StorageCtrl, ValidatorCtrl) {
   //get selectors
   const UISelectors = UiCtrl.UISelectors();
 
@@ -41,8 +41,17 @@ const App = (function (UiCtrl, FightersCtrl, StorageCTRL, ValidatorCtrl) {
       //get inputs
       const newFighter = FightersCtrl.addFighter(inputValues);
 
+      //set local Storage
+      StorageCtrl.setStorageFighters(newFighter);
+
+      //set local Storage
+      const storageFighter = StorageCtrl.getStorageFighters();
+
+      //show ranking
+      UiCtrl.showRanking();
+
       //Populate fighter
-      UiCtrl.populateFighters(newFighter);
+      UiCtrl.populateFighters(storageFighter);
 
       //clear inputs
       UiCtrl.clearInputValues();
@@ -107,12 +116,16 @@ const App = (function (UiCtrl, FightersCtrl, StorageCTRL, ValidatorCtrl) {
 
     //get state fighter
     const currentFighterState = FightersCtrl.getStateFighter();
+    const id = parseInt(currentFighterState.id);
 
     //delete from DB
-    FightersCtrl.deleteFighter(currentFighterState.id);
+    FightersCtrl.deleteFighter(id);
 
     //delete from ui
-    UiCtrl.deleteFighterUi(currentFighterState.id);
+    UiCtrl.deleteFighterUi(id);
+
+    //delete from storage
+    StorageCtrl.deleteStorageFighters(id);
 
     //clear inputs
     UiCtrl.clearInputValues();
@@ -139,8 +152,15 @@ const App = (function (UiCtrl, FightersCtrl, StorageCTRL, ValidatorCtrl) {
       //clear edit state
       UiCtrl.clearModeEditState();
 
-      //Populate fighter
-      UiCtrl.populateFighters(fighters);
+      if (fighters.length === 0) {
+        //hide ranking
+        UiCtrl.hideRanking();
+      } else {
+        //show ranking
+        UiCtrl.showRanking();
+        //Populate fighter
+        UiCtrl.populateFighters(fighters);
+      }
 
       //run event eventListerners
       eventListerners();

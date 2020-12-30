@@ -1,3 +1,5 @@
+import StorageCTRL from './StorageCTRL';
+
 const fightersCTRL = (function () {
   //name, nickname, image, rank, win, lost, draw
 
@@ -26,7 +28,8 @@ const fightersCTRL = (function () {
   }
 
   let data = {
-    fighters: [
+    fighters: StorageCTRL.getStorageFighters(),
+    /*
       {
         name: 'Jone Jones',
         nickname: 'Bones',
@@ -53,7 +56,8 @@ const fightersCTRL = (function () {
         lastEdit: '9999',
         id: 4,
       },
-    ],
+      */
+
     stateFighter: null,
   };
 
@@ -80,6 +84,7 @@ const fightersCTRL = (function () {
       //create ID
       let ID;
       let arrOfId = [];
+
       if (data.fighters.length === 0) {
         ID = 0;
       } else {
@@ -106,6 +111,7 @@ const fightersCTRL = (function () {
         ID
       );
 
+      /*
       //insert new figter into the array figters
       data.fighters.push(newFighter);
 
@@ -113,8 +119,8 @@ const fightersCTRL = (function () {
       data.fighters.sort(function (a, b) {
         return a.rank - b.rank;
       });
-
-      return data.fighters;
+*/
+      return newFighter;
     },
     updateFighter: function (id, upFighter) {
       data.fighters.forEach((fighter) => {
