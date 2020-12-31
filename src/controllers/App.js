@@ -2,8 +2,15 @@ import UiCtrl from './UiCTRL';
 import FightersCtrl from './FighterCTRL';
 import StorageCTRL from './StorageCTRL';
 import ValidatorCTRL from './ValidatorCTRL';
+import AnimationCTRL from './AnimationsCTRL';
 
-const App = (function (UiCtrl, FightersCtrl, StorageCtrl, ValidatorCtrl) {
+const App = (function (
+  UiCtrl,
+  FightersCtrl,
+  StorageCtrl,
+  ValidatorCtrl,
+  AnimationCtrl
+) {
   //get selectors
   const UISelectors = UiCtrl.UISelectors();
 
@@ -27,6 +34,12 @@ const App = (function (UiCtrl, FightersCtrl, StorageCtrl, ValidatorCtrl) {
     //Handle cancel
     const cancelBtn = document.querySelector(UISelectors.cancelBtn);
     cancelBtn.addEventListener('click', handleCancel);
+
+    //handle animations header
+    document.addEventListener('scroll', handleHeaderAnimation);
+
+    //handle animations edit
+    document.addEventListener('click', handleEditAnimation);
   }
 
   //Handle new fighter  function
@@ -156,6 +169,20 @@ const App = (function (UiCtrl, FightersCtrl, StorageCtrl, ValidatorCtrl) {
     //clear edit state
     UiCtrl.clearModeEditState();
   };
+
+  //handle header animations
+  const handleHeaderAnimation = () => {
+    //Animations
+    AnimationCtrl.getTopHeight();
+  };
+
+  //handle edit scroll
+  const handleEditAnimation = (e) => {
+    if (e.target.classList.contains('ranking__edit')) {
+      AnimationCtrl.scrollToForm();
+    }
+  };
+
   return {
     init: function () {
       //get fighters
@@ -178,6 +205,6 @@ const App = (function (UiCtrl, FightersCtrl, StorageCtrl, ValidatorCtrl) {
       eventListerners();
     },
   };
-})(UiCtrl, FightersCtrl, StorageCTRL, ValidatorCTRL);
+})(UiCtrl, FightersCtrl, StorageCTRL, ValidatorCTRL, AnimationCTRL);
 
 export default App;
