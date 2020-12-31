@@ -41,17 +41,14 @@ const App = (function (UiCtrl, FightersCtrl, StorageCtrl, ValidatorCtrl) {
       //get inputs
       const newFighter = FightersCtrl.addFighter(inputValues);
 
-      //set local Storage
-      StorageCtrl.setStorageFighters(newFighter);
-
-      //set local Storage
-      const storageFighter = StorageCtrl.getStorageFighters();
-
       //show ranking
       UiCtrl.showRanking();
 
+      //add to Storage
+      const storageFighters = StorageCtrl.setStorageFighters(newFighter);
+
       //Populate fighter
-      UiCtrl.populateFighters(storageFighter);
+      UiCtrl.populateFighters(storageFighters);
 
       //clear inputs
       UiCtrl.clearInputValues();
@@ -72,6 +69,10 @@ const App = (function (UiCtrl, FightersCtrl, StorageCtrl, ValidatorCtrl) {
 
       //active edit mode
       UiCtrl.modeEditState();
+
+      //get fighter
+      //StorageCtrl.getStorageFighters()
+      FightersCtrl.getFighters();
 
       //set state edit fighter
       FightersCtrl.setStateFighter(id);
@@ -100,6 +101,12 @@ const App = (function (UiCtrl, FightersCtrl, StorageCtrl, ValidatorCtrl) {
       inputValue
     );
 
+    //updateStorage
+    const updateStorage = StorageCtrl.updateStorageFighters(
+      currentFighterState.id,
+      inputValue
+    );
+
     //populate new fighters update
     UiCtrl.populateFighters(updateFighters);
 
@@ -124,7 +131,7 @@ const App = (function (UiCtrl, FightersCtrl, StorageCtrl, ValidatorCtrl) {
     //delete from ui
     UiCtrl.deleteFighterUi(id);
 
-    //delete from storage
+    //Delete form storage
     StorageCtrl.deleteStorageFighters(id);
 
     //clear inputs
@@ -132,6 +139,11 @@ const App = (function (UiCtrl, FightersCtrl, StorageCtrl, ValidatorCtrl) {
 
     //clear edit state
     UiCtrl.clearModeEditState();
+
+    if (FightersCtrl.getFighters().length === 0) {
+      //hide ranking
+      UiCtrl.hideRanking();
+    }
   };
 
   //Handle cancel

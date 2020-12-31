@@ -111,7 +111,6 @@ const fightersCTRL = (function () {
         ID
       );
 
-      /*
       //insert new figter into the array figters
       data.fighters.push(newFighter);
 
@@ -119,7 +118,7 @@ const fightersCTRL = (function () {
       data.fighters.sort(function (a, b) {
         return a.rank - b.rank;
       });
-*/
+
       return newFighter;
     },
     updateFighter: function (id, upFighter) {
