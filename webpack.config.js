@@ -1,11 +1,11 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const webpack = require('webpack');
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const path = require("path")
+const webpack = require("webpack")
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
 
-  entry: ['./src/index.js'],
+  entry: ["./src/index.js"],
 
   watch: false,
   /*
@@ -16,10 +16,10 @@ module.exports = {
   }
   */
 
-  devtool: 'source-map',
+  devtool: "source-map",
 
   devServer: {
-    contentBase: path.join(__dirname, 'src'),
+    contentBase: path.join(__dirname, "src"),
 
     watchContentBase: true,
     hot: true,
@@ -29,8 +29,9 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Web pack starter project',
-      template: path.resolve('./src/index.html'),
+      title: "Web pack starter project",
+      template: path.resolve("./src/index.html"),
+      publicPath: "/",
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
@@ -39,15 +40,15 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.js$/,
         exclude: /node_module/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env'],
+            presets: ["@babel/preset-env"],
           },
         },
       },
@@ -55,19 +56,19 @@ module.exports = {
       {
         test: /\.(jpg|jpeg|gif|png|svg)$/,
         use: {
-          loader: 'file-loader',
+          loader: "file-loader",
           options: {
-            outputPath: './dist/imagens',
-            name: '[name].[ext]',
+            outputPath: "./dist/imagens",
+            name: "[name].[ext]",
           },
         },
       },
       {
         test: /\.html$/,
         use: {
-          loader: 'html-loader',
+          loader: "html-loader",
         },
       },
     ],
   },
-};
+}

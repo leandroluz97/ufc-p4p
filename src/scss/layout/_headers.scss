@@ -1,5 +1,8 @@
 .header {
   background-color: $ligter-gray;
+  position: sticky;
+  top: 0;
+  z-index: 99;
 
   &__container {
     display: flex;
@@ -15,10 +18,12 @@
     z-index: 10;
     width: 100vw;
     height: 88vh;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transform: translateX(-100%);
+    transition: all 0.5s ease;
 
     &-item {
       padding: 2em;
@@ -52,7 +57,9 @@
     }
   }
 }
-
+.show--menu {
+  transform: translateX(0);
+}
 @media (min-width: 426px) {
   html {
     width: 100%;
@@ -60,7 +67,6 @@
   .header {
     &__container {
       display: flex;
-
       min-height: 10vh;
       justify-content: space-between;
       align-items: center;

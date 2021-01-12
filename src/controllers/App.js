@@ -1,8 +1,8 @@
-import UiCtrl from './UiCTRL';
-import FightersCtrl from './FighterCTRL';
-import StorageCTRL from './StorageCTRL';
-import ValidatorCTRL from './ValidatorCTRL';
-import AnimationCTRL from './AnimationsCTRL';
+import UiCtrl from "./UiCTRL"
+import FightersCtrl from "./FighterCTRL"
+import StorageCTRL from "./StorageCTRL"
+import ValidatorCTRL from "./ValidatorCTRL"
+import AnimationCTRL from "./AnimationsCTRL"
 
 const App = (function (
   UiCtrl,
@@ -12,199 +12,245 @@ const App = (function (
   AnimationCtrl
 ) {
   //get selectors
-  const UISelectors = UiCtrl.UISelectors();
+  const UISelectors = UiCtrl.UISelectors()
 
   //All event listeners
   function eventListerners() {
     //Handle new fighter event
-    const addSubmit = document.querySelector(UISelectors.addBtn);
-    addSubmit.addEventListener('click', handleAddSubmit);
+    const addSubmit = document.querySelector(UISelectors.addBtn)
+    addSubmit.addEventListener("click", handleAddSubmit)
 
     //Hanfle edit state
-    document.addEventListener('click', handleEditState);
+    document.addEventListener("click", handleEditState)
 
     //Handle submit update
-    const updateBtn = document.querySelector(UISelectors.updateBtn);
-    updateBtn.addEventListener('click', handleUpdateSubmit);
+    const updateBtn = document.querySelector(UISelectors.updateBtn)
+    updateBtn.addEventListener("click", handleUpdateSubmit)
 
     //Handle delete
-    const deleteBtn = document.querySelector(UISelectors.deleteBtn);
-    deleteBtn.addEventListener('click', handleDelete);
+    const deleteBtn = document.querySelector(UISelectors.deleteBtn)
+    deleteBtn.addEventListener("click", handleDelete)
 
     //Handle cancel
-    const cancelBtn = document.querySelector(UISelectors.cancelBtn);
-    cancelBtn.addEventListener('click', handleCancel);
+    const cancelBtn = document.querySelector(UISelectors.cancelBtn)
+    cancelBtn.addEventListener("click", handleCancel)
 
     //handle animations header
-    document.addEventListener('scroll', handleHeaderAnimation);
+    document.addEventListener("scroll", handleHeaderAnimation)
 
     //handle animations edit
-    document.addEventListener('click', handleEditAnimation);
+    document.addEventListener("click", handleEditAnimation)
+
+    //women
+    //const women = document.querySelector(UISelectors.women)
+    document.addEventListener("click", handleWomen)
+
+    //women division
+    /*
+    const women = document.querySelector(UISelectors.women)
+    women.addEventListener("click", handleWomen)
+    */
+
+    //menu
+    const hamburger = document.querySelector(UISelectors.hamburger)
+    hamburger.addEventListener("click", handleHamburger)
+
+    //homepage
+    const homepage = document.querySelector(UISelectors.ufc)
+    homepage.addEventListener("click", handleHomepage)
   }
 
   //Handle new fighter  function
   const handleAddSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     //get input value
-    const inputValues = UiCtrl.getInputValue();
+    const inputValues = UiCtrl.getInputValue()
 
     //validate inputs
-    const validate = ValidatorCtrl.validateInput(inputValues);
+    const validate = ValidatorCtrl.validateInput(inputValues)
     if (validate.value) {
       //get inputs
-      const newFighter = FightersCtrl.addFighter(inputValues);
+      const newFighter = FightersCtrl.addFighter(inputValues)
 
       //show ranking
-      UiCtrl.showRanking();
+      UiCtrl.showRanking()
 
       //add to Storage
-      const storageFighters = StorageCtrl.setStorageFighters(newFighter);
+      const storageFighters = StorageCtrl.setStorageFighters(newFighter)
 
       //Populate fighter
-      UiCtrl.populateFighters(storageFighters);
+      UiCtrl.populateFighters(storageFighters)
 
       //clear inputs
-      UiCtrl.clearInputValues();
+      UiCtrl.clearInputValues()
     } else {
-      ValidatorCtrl.alert(validate.message);
-      console.log('error validations');
+      ValidatorCtrl.alert(validate.message)
+      console.log("error validations")
     }
-  };
+  }
 
   //Hanfle edit state
   const handleEditState = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     //click the edit btn
-    if (e.target.classList.contains('ranking__edit')) {
+    if (e.target.classList.contains("ranking__edit")) {
       //save id
-      let id = parseInt(e.target.parentElement.getAttribute('data-id'));
+      let id = parseInt(e.target.parentElement.getAttribute("data-id"))
 
       //active edit mode
-      UiCtrl.modeEditState();
+      UiCtrl.modeEditState()
 
       //get fighter
       //StorageCtrl.getStorageFighters()
-      FightersCtrl.getFighters();
+      FightersCtrl.getFighters()
 
       //set state edit fighter
-      FightersCtrl.setStateFighter(id);
+      FightersCtrl.setStateFighter(id)
 
       //get state fighter
-      const currentFighterState = FightersCtrl.getStateFighter();
+      const currentFighterState = FightersCtrl.getStateFighter()
 
       //show input value
-      UiCtrl.setinputValues(currentFighterState);
+      UiCtrl.setinputValues(currentFighterState)
     }
-  };
+  }
 
   //handle updte submit
   const handleUpdateSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     //get input values
-    const inputValue = UiCtrl.getInputValue();
+    const inputValue = UiCtrl.getInputValue()
 
     //get state fighter
-    const currentFighterState = FightersCtrl.getStateFighter();
+    const currentFighterState = FightersCtrl.getStateFighter()
 
     //update fighter
     const updateFighters = FightersCtrl.updateFighter(
       currentFighterState.id,
       inputValue
-    );
+    )
 
     //updateStorage
     const updateStorage = StorageCtrl.updateStorageFighters(
       currentFighterState.id,
       inputValue
-    );
+    )
 
     //populate new fighters update
-    UiCtrl.populateFighters(updateFighters);
+    UiCtrl.populateFighters(updateFighters)
 
     //clear inputs
-    UiCtrl.clearInputValues();
+    UiCtrl.clearInputValues()
 
     //clear edit state
-    UiCtrl.clearModeEditState();
-  };
+    UiCtrl.clearModeEditState()
+  }
 
   //Handle delete
   const handleDelete = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     //get state fighter
-    const currentFighterState = FightersCtrl.getStateFighter();
-    const id = parseInt(currentFighterState.id);
+    const currentFighterState = FightersCtrl.getStateFighter()
+    const id = parseInt(currentFighterState.id)
 
     //delete from DB
-    FightersCtrl.deleteFighter(id);
+    FightersCtrl.deleteFighter(id)
 
     //delete from ui
-    UiCtrl.deleteFighterUi(id);
+    UiCtrl.deleteFighterUi(id)
 
     //Delete form storage
-    StorageCtrl.deleteStorageFighters(id);
+    StorageCtrl.deleteStorageFighters(id)
 
     //clear inputs
-    UiCtrl.clearInputValues();
+    UiCtrl.clearInputValues()
 
     //clear edit state
-    UiCtrl.clearModeEditState();
+    UiCtrl.clearModeEditState()
 
     if (FightersCtrl.getFighters().length === 0) {
       //hide ranking
-      UiCtrl.hideRanking();
+      UiCtrl.hideRanking()
     }
-  };
+  }
 
   //Handle cancel
   const handleCancel = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     //clear inputs
-    UiCtrl.clearInputValues();
+    UiCtrl.clearInputValues()
 
     //clear edit state
-    UiCtrl.clearModeEditState();
-  };
+    UiCtrl.clearModeEditState()
+  }
 
   //handle header animations
   const handleHeaderAnimation = () => {
     //Animations
-    AnimationCtrl.getTopHeight();
-  };
+    AnimationCtrl.getTopHeight()
+  }
 
   //handle edit scroll
   const handleEditAnimation = (e) => {
-    if (e.target.classList.contains('ranking__edit')) {
-      AnimationCtrl.scrollToForm();
+    if (e.target.classList.contains("ranking__edit")) {
+      AnimationCtrl.scrollToForm()
     }
-  };
+  }
 
+  //women
+  const handleWomen = (e) => {
+    if (
+      e.target.classList.contains("women") ||
+      e.target.classList.contains("men")
+    ) {
+      //print womens
+      UiCtrl.printWomen()
+
+      //expanded menu
+      document
+        .querySelector(UISelectors.headerMiddle)
+        .classList.remove("show--menu")
+    }
+  }
+
+  //menu hamburger
+  const handleHamburger = (e) => {
+    //sohw expanded menu
+    document
+      .querySelector(UISelectors.headerMiddle)
+      .classList.toggle("show--menu")
+  }
+
+  // homepage
+  const handleHomepage = (e) => {
+    location.reload()
+  }
   return {
     init: function () {
       //get fighters
-      const fighters = FightersCtrl.getFighters();
+      const fighters = FightersCtrl.getFighters()
 
       //clear edit state
-      UiCtrl.clearModeEditState();
+      UiCtrl.clearModeEditState()
 
       if (fighters.length === 0) {
         //hide ranking
-        UiCtrl.hideRanking();
+        UiCtrl.hideRanking()
       } else {
         //show ranking
-        UiCtrl.showRanking();
+        UiCtrl.showRanking()
         //Populate fighter
-        UiCtrl.populateFighters(fighters);
+        UiCtrl.populateFighters(fighters)
       }
 
       //run event eventListerners
-      eventListerners();
+      eventListerners()
     },
-  };
-})(UiCtrl, FightersCtrl, StorageCTRL, ValidatorCTRL, AnimationCTRL);
+  }
+})(UiCtrl, FightersCtrl, StorageCTRL, ValidatorCTRL, AnimationCTRL)
 
-export default App;
+export default App

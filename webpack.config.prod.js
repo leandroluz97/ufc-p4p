@@ -1,4 +1,4 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -14,7 +14,9 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['dist'],
+    }),
     new HtmlWebpackPlugin({
       title: 'Web pack starter project',
       template: path.resolve('./src/index.html'),

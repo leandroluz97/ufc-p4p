@@ -1,0 +1,35 @@
+.row {
+  margin: 2rem 7%;
+}
+
+.col-1-4 {
+  width: 100%;
+}
+@media (min-width: 426px) {
+}
+@media (min-width: 769px) {
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+  }
+  .col-1-4 {
+    width: 100%;
+
+    //&:not(:last-child) {
+
+    // }
+  }
+}
+@media (min-width: 1024px) {
+  .row {
+    max-width: 1200px;
+    margin: 3rem auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 1rem;
+  }
+  .col-1-4 {
+    width: 100%;
+  }
+}
