@@ -138,7 +138,7 @@ const UiCtrl = (() => {
       content.innerHTML = ""
       const womenSection = document.querySelector(UISelectors.row)
       womenSection.innerHTML = ""
-      womenSection.innerHTML += `
+      /*womenSection.innerHTML += `
       <div class="col-1-4">
       <div class="card">
         <h3 class="card__title" >LightWeight</h3>
@@ -226,7 +226,7 @@ const UiCtrl = (() => {
 
       </div>
     </div>
-      `
+      `*/
     },
   }
 })()
